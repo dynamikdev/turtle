@@ -1,0 +1,29 @@
+
+
+    x1 : <input text ng-model="newline.x1" width="5"><br/>
+    y1 : <input text ng-model="newline.y1" width="5"><br/>
+    x2 : <input text ng-model="newline.x2" width="5"><br/>
+    y2 : <input text ng-model="newline.y2" width="5"><br/>
+    <button ng-click="addLine(newline)">ajoute</button>
+    angle : <input text ng-model="deplacement.angle" width="5"><br/>
+    distance : <input text ng-model="deplacement.distance" width="5"><br/>
+    <button ng-click="move(deplacement)">ajoute</button>
+            <br/>
+    <ul>
+    <li ng-repeat="line in lines"> x1="{{line.x1}}" y1="{{line.y1}}" x2="{{line.x2}}" y2="{{line.y2}}"</li>
+    </ul>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width=800 height=800>
+        <title>Line</title>
+
+
+        <circle r="20" style="fill:indigo;fill-opacity:0.22;stroke:indigo;stroke-width:3px;stroke-dasharray:5,5;" transform="translate({{X}},{{Y}}) rotate({{Angle}})"/>
+
+        <polygon fill="firebrick" stroke="gold" stroke-width="1"
+                 points="0,0 15,15 0,-20 -15,15" transform="translate({{X}},{{Y}}) rotate({{-Angle + 90}})" />
+
+        <line ng-repeat="line in lines" x1="{{line.x1}}" y1="{{line.y1}}" x2="{{line.x2}}" y2="{{line.y2}}" style="stroke:green; stroke-width:3"/>
+
+
+    </svg>
+
