@@ -1,19 +1,22 @@
+<div class="page-header">
+    <h1>simple turtle basic example</h1>
+</div>
+
+ <div class="row playground">
+    <div class="span3 command-pannel img-rounded">
+    <div class="span3">
+        angle : <input text ng-model="deplacement.angle" maxlength="5" width="5"><br/>
+        distance : <input text ng-model="deplacement.distance" maxlength="5" width="5"><br/>
+        <button ng-click="move(deplacement)">ajoute</button>
+        <br/></div>
+    <div class="span3"><ul>
+        <li ng-repeat="line in lines"> x1="{{line.x1}}" y1="{{line.y1}}" x2="{{line.x2}}" y2="{{line.y2}}"</li>
+    </ul></div>
 
 
-    x1 : <input text ng-model="newline.x1" width="5"><br/>
-    y1 : <input text ng-model="newline.y1" width="5"><br/>
-    x2 : <input text ng-model="newline.x2" width="5"><br/>
-    y2 : <input text ng-model="newline.y2" width="5"><br/>
-    <button ng-click="addLine(newline)">ajoute</button>
-    angle : <input text ng-model="deplacement.angle" width="5"><br/>
-    distance : <input text ng-model="deplacement.distance" width="5"><br/>
-    <button ng-click="move(deplacement)">ajoute</button>
-            <br/>
-    <ul>
-    <li ng-repeat="line in lines"> x1="{{line.x1}}" y1="{{line.y1}}" x2="{{line.x2}}" y2="{{line.y2}}"</li>
-    </ul>
-
-    <svg xmlns="http://www.w3.org/2000/svg" width=800 height=800>
+    </div>
+     <div class="span9 rendering-panel">
+    <svg xmlns="http://www.w3.org/2000/svg" width=670 height=670>
         <title>Line</title>
 
 
@@ -26,4 +29,5 @@
 
 
     </svg>
-
+     </div>
+ </div>
