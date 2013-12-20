@@ -3,13 +3,21 @@ app = angular.module 'ngTurtle', []
 
 app.factory "Turtle", ->
   class Turtle
-    x: 200
-    y: 200
-    angle: -90
+    x: 400
+    y: 400
+    angle: -270
+    write: true
 
     move: (distance) ->
-      @x =   distance * Math.cos(@angle)
-      @y =   distance * Math.sin(@angle)
+      @x =  @x + (parseInt(distance, 10) * Math.cos(parseInt(@angle, 10) * Math.PI / 180))
+      @y =  @y - (parseInt(distance, 10) * Math.sin(parseInt(@angle, 10) * Math.PI / 180));
 
     turn: (angle) ->
-      @angle = angle
+      @angle -= parseInt(angle)
+
+    up: () ->
+      @write = false
+
+    down: () ->
+      @write = true
+  new Turtle
