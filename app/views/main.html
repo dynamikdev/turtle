@@ -5,12 +5,14 @@
  <div class="row playground">
     <div class="span3 command-pannel img-rounded">
     <div class="span3">
-        angle : <input text ng-model="deplacement.angle" maxlength="5" width="5"><br/>
-        distance : <input text ng-model="deplacement.distance" maxlength="5" width="5"><br/>
-        <button ng-click="move(deplacement)">ajoute</button>
-        <br/></div>
+        <form>
+        angle : <input text ng-model="deplacement.angle" class="input-small" ><br/>
+        distance : <input text ng-model="deplacement.distance" class="input-small" ><br/>
+        <button ng-click="move(deplacement)" class="btn-primary">ajoute</button>
+        </form>
+            <br/></div>
     <div class="span3"><ul>
-        <li ng-repeat="line in lines"> x1="{{line.x1}}" y1="{{line.y1}}" x2="{{line.x2}}" y2="{{line.y2}}"</li>
+        <li ng-repeat="line in lines" > x1="{{line.x1}}" y1="{{line.y1}}" x2="{{line.x2}}" y2="{{line.y2}}"</li>
     </ul></div>
 
 

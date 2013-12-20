@@ -1,13 +1,13 @@
 'use strict';
+//angular.factory()
 
-//angular.module('turtleApp',['ngRoute'])
 //    .factory('turtle',function(){
 //        var turtle;
 //        turtle = new Turtle();
 //        return turtle;
 //
 //    });
-var MainCtrl = function ($scope, $log) {
+var MainCtrl = function ($scope, $log, Turtle) {
     $scope.X = 400;
     $scope.Y = 400;
     $scope.Angle = 90 - 360;
