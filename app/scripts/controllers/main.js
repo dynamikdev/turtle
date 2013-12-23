@@ -8,15 +8,23 @@
 //
 //    });
 var MainCtrl = function ($scope, $log, Turtle) {
+
+
+
     $scope.X = Turtle.x;
     $scope.Y = Turtle.y;
     $scope.Angle = Turtle.angle;
 
     $scope.lines = [
     ];
-    $scope.history = [
-    ];
-
+    $scope.history = [];
+    var updatingScope = function(){
+        $scope.history = Turtle.history;
+        $log.log($scope.history);
+        $scope.Angle = Turtle.angle;
+        $scope.X = Turtle.x;
+        $scope.Y = Turtle.y;
+    }
     $scope.addLine = function (line) {
         console.log(line);
         $scope.lines.push(angular.copy(line));
@@ -26,14 +34,17 @@ var MainCtrl = function ($scope, $log, Turtle) {
         var x1 = Turtle.x;
         var y1 = Turtle.y;
         //deplacement
-        Turtle.turn(deplacement.angle);
-        Turtle.move(deplacement.distance);
+        if (!angular.isUndefined(deplacement.angle) && deplacement.angle != "" && parseInt(deplacement.angle,10) != 0){
+            Turtle.turn(deplacement.angle);
+        }
+        if (!angular.isUndefined(deplacement.distance) && deplacement.distance != "" && parseInt(deplacement.distance) != 0){
+            Turtle.move(deplacement.distance);
+        }
         //pousse histo
         $scope.lines.push({'x1': x1, 'y1': y1, 'x2': Turtle.x, 'y2': Turtle.y});
         //mise a jour position et sens
-        $scope.Angle = Turtle.angle;
-        $scope.X = Turtle.x;
-        $scope.Y = Turtle.y;
+        updatingScope();
+//        $scope.$apply();
         //-------------
         $log.log(Turtle);
     };

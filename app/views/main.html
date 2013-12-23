@@ -12,7 +12,7 @@
         </form>
             <br/></div>
     <div class="span3"><ul>
-        <li ng-repeat="line in lines" > x1="{{line.x1}}" y1="{{line.y1}}" x2="{{line.x2}}" y2="{{line.y2}}"</li>
+        <li ng-repeat="(k,command) in history track by k" > {{command}}</li>
     </ul></div>
 
 
