@@ -1,5 +1,5 @@
 'use strict';
-angular.module('turtleApp', ['ngRoute','ngTurtle'])
+angular.module('turtleApp', ['ngRoute','ngTurtle','ui.bootstrap.buttons'])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
