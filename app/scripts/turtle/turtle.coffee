@@ -33,7 +33,7 @@ app.service "Turtle",
 app.directive 'turtleCommandPanel', (Turtle) ->
   templateUrl: 'scripts/turtle/templates/commandpanel.html'
   restrict: 'E'
-  controller: ($scope, $element, $attrs, $transclude) ->
+  controller: ($scope) ->
     $scope.move  = (deplacement)->
       #save precedente pos
       x1 = Turtle.x
