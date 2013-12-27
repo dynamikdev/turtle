@@ -30,15 +30,11 @@ app.service "Turtle",
       @history.push "up"
       @write = true
 
-app.directive 'turtleCommandPanel', () ->
-  priority: 0
+app.directive 'turtleCommandPanel', (Turtle) ->
   templateUrl: 'scripts/turtle/templates/commandpanel.html'
-  replace: false
-  transclude: false
   restrict: 'E'
-  scope: false
-  controller: ($scope, $element, $attrs, $transclude, $rootScope, Turtle) ->
-    $scope.move (deplacement)->
+  controller: ($scope, $element, $attrs, $transclude) ->
+    $scope.move  = (deplacement)->
       #save precedente pos
       x1 = Turtle.x
       Turtle.write = deplacement.write
@@ -46,45 +42,13 @@ app.directive 'turtleCommandPanel', () ->
       #deplacement
       if parseInt(deplacement.angle?) != 0
         angle = Turtle.turn(deplacement.angle)
-#        $rootScope.$broadcast("TurtleTurn",angle)
       if parseInt(deplacement.distance?) != 0
         move = Turtle.move(deplacement.distance)
 
 app.directive 'turtleHistoryPanel', () ->
-  priority: 0
   templateUrl: 'scripts/turtle/templates/historypanel.html'
-  replace: false
-  transclude: false
   restrict: 'E'
-  scope: false
-  controller: ($scope, $element, $attrs, $transclude, Turtle) ->
-    $scope.history = Turtle.history
 
-
-
-app.directive 'turtleRenderingPanel', ($log,Turtle) ->
-  priority: 0
+app.directive 'turtleRenderingPanel', () ->
   templateUrl: 'scripts/turtle/templates/renderingpanel.html'
-  replace: false
-  transclude: false
   restrict: 'E'
-  scope: false #{width : "@width", height : "@height"}
-#  link : ($scope, $element, $attrs) ->
-##    $log.log($scope.width,$scope.height)
-#    Turtle.x = parseInt($scope.width) / 2
-#    Turtle.y = parseInt($scope.height) / 2
-#    $scope.$watch Turtle.x, -> $scope.X = Turtle.x
-#    $scope.$watch Turtle.y, -> $scope.Y = Turtle.y
-#    $scope.$watch Turtle.angle, -> $scope.Angle = Turtle.angle
-#    $scope.$watch Turtle.write, -> $scope.write = Turtle.write
-
-  controller: ($scope, $element, $attrs, $transclude) ->
-    $scope.X = Turtle.x
-    $scope.Y = Turtle.y
-    $scope.Angle = Turtle.angle
-    $scope.write = Turtle.write
-    $scope.traces = Turtle.traces
-#    $scope.X = Turtle.x
-#    $scope.Y = Turtle.y
-#    $scope.Angle = Turtle.angle
-#    $scope.write = Turtle.write

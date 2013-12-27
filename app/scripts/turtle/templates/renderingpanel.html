@@ -2,12 +2,12 @@
     <title>Line</title>
 
 
-    <circle r="20" style="fill:indigo;fill-opacity:0.22;stroke:indigo;stroke-width:3px;stroke-dasharray:5,5;" transform="translate({{X}},{{Y}}) rotate({{Angle}})"/>
+    <circle r="20" style="fill:indigo;fill-opacity:0.22;stroke:indigo;stroke-width:3px;stroke-dasharray:5,5;" transform="translate({{turtle.x}},{{turtle.y}}) rotate({{turtle.angle}})"/>
 
     <polygon fill="firebrick" stroke="gold" stroke-width="1"
-             points="0,0 15,15 0,-20 -15,15" transform="translate({{X}},{{Y}}) rotate({{-Angle + 90}})" />
+             points="0,0 15,15 0,-20 -15,15" transform="translate({{turtle.x}},{{turtle.y}}) rotate({{-turtle.angle + 90}})" />
 
-    <line ng-repeat="line in traces | filter:{write:true}" x1="{{line.x1}}" y1="{{line.y1}}" x2="{{line.x2}}" y2="{{line.y2}}" style="stroke:green; stroke-width:3"/>
+    <line ng-repeat="line in turtle.traces | filter:{write:true}" x1="{{line.x1}}" y1="{{line.y1}}" x2="{{line.x2}}" y2="{{line.y2}}" style="stroke:green; stroke-width:3"/>
 
 
 </svg>

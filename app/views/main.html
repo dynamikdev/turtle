@@ -5,13 +5,13 @@
  <div class="row playground">
     <div class="span3 command-pannel img-rounded">
     <div class="span3">
-        <turtle-command-panel></turtle-command-panel>
+        <turtle-command-panel turtle={{turtle}}></turtle-command-panel>
     </div>
-    <div class="span3"><turtle-history-panel></turtle-history-panel></div>
+    <div class="span3"><turtle-history-panel turtle={{turtle}}></turtle-history-panel></div>
 
 
     </div>
      <div class="span9 rendering-panel">
-        <turtle-rendering-panel width=400 height=600></turtle-rendering-panel>
+        <turtle-rendering-panel width=400 height=600  turtle={{turtle}}></turtle-rendering-panel>
      </div>
  </div>
