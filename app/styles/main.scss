@@ -3,30 +3,47 @@ $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 
 @import "bootstrap-sass/lib/bootstrap";
 
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+.box { @include border-radius(10px); }
+
+$basicbgcolor : #888;
+$panelbgcolor : #444;
 /* Put your CSS here */
 
 body {
   margin: 20px;
-    background: #888888;
+    background: $basicbgcolor;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
 }
 
+
 .playground {
-  background-color: #888888;
+  @extend .box;
+
+  background-color: $basicbgcolor;
 }
 
 .command-pannel{
-  //margin: 15px 15px 15px 15px;
-  background-color: #444444;
+  @extend .box;//margin: 15px 15px 15px 15px;
+  background-color: #444;
   color: #ffffff;
 }
 .command-pannel input{
-  width: 30px;
+  @extend .box;
+    width: 30px;
 }
 .rendering-panel{
-  //margin: 15px 15px 15px 15px;
-  background-color: #cccccc;
+  @extend .box;
+    //margin: 15px 15px 15px 15px;
+  background-color: #ccc;
 
 
 }
