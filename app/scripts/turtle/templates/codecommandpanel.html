@@ -1,0 +1,11 @@
+<form name="codeCommand" novalidate>
+    <input type="text" name="code" ng-pattern="patternCode" ng-model="code" width="20">
+    codeCommand.$valid = {{codeCommand.$valid}}
+    codeCommand.code.$valid = {{codeCommand.code.$valid}}
+    <button ng-click="addCode(code,write)" class="btn-primary" valid-command>   ---->   </button>
+    <br/>
+    <button type="button" class="btn btn-primary" ng-model="write" btn-checkbox >
+        write
+    </button>
+
+</form>

@@ -45,6 +45,25 @@ app.directive 'turtleCommandPanel', (Turtle) ->
       if parseInt(deplacement.distance?) != 0
         move = Turtle.move(deplacement.distance)
 
+app.directive 'turtleCodeCommandPanel', (Turtle) ->
+  templateUrl: 'scripts/turtle/templates/codecommandpanel.html'
+  restrict: 'E'
+#  require: 'ngModel'
+  controller: ($scope,$log)->
+    $scope.patternCode = /^\w+\ +\-?\d+$/
+    $scope.addCode = (code,write)->
+      $log.log code
+
+#INTEGER_REGEXP = /^\-?\d+$/
+#app.directive "validCommand", ($log)->
+#  direct=
+#    restrict: 'A'
+#    link: (scope, elm, attrs)->
+#        if INTEGER_REGEXP.test elm.val()
+#          $log.log "la valeur est correcte"
+#        else
+#          $log.log "la valeur est incorrecte"
+
 app.directive 'turtleHistoryPanel', () ->
   templateUrl: 'scripts/turtle/templates/historypanel.html'
   restrict: 'E'

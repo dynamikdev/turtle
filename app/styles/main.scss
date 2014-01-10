@@ -37,8 +37,7 @@ body {
   color: #ffffff;
 }
 .command-pannel input{
-  @extend .box;
-    width: 30px;
+  @include border-radius(5px);
 }
 .rendering-panel{
   @extend .box;
