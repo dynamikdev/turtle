@@ -45,14 +45,45 @@ app.directive 'turtleCommandPanel', (Turtle) ->
       if parseInt(deplacement.distance?) != 0
         move = Turtle.move(deplacement.distance)
 
-app.directive 'turtleCodeCommandPanel', (Turtle) ->
+app.factory "turtleInterpreter" , ($log,Turtle) ->
+  class TurtleInterpreter
+    sendCommand: (command) ->
+      patternMove = ///
+      ^(move)+ #move command
+      \s+ # with a space
+      \-?\ # may be a negative number
+      d+$ # the value
+      ///
+      patternTurn = ///
+      ^(turn)+ # the turn command
+      \s+ # with a space
+      \-? # may be a negative number
+      \d+$ # the value
+      ///
+      patternValue =///
+        \+?
+        \d+$
+      ///
+
+      if command.match patternMove
+        value = command.match /\ +\d+$/
+        $log.log value
+        Turtle.move(value[0])
+      if command.match patternTurn
+        value = command.match /\ +\d+$/
+        $log.log value
+        Turtle.turn(value[0])
+
+app.directive 'turtleCodeCommandPanel', (Turtle,turtleInterpreter) ->
   templateUrl: 'scripts/turtle/templates/codecommandpanel.html'
   restrict: 'E'
 #  require: 'ngModel'
-  controller: ($scope,$log)->
-    $scope.patternCode = /^\w+\ +\-?\d+$/
+  controller: ($scope,$log,turtleInterpreter,Turtle)->
+    ti = new turtleInterpreter()
+    $scope.patternCode = /^(move|turn)+\ +\-?\d+$/
     $scope.addCode = (code,write)->
       $log.log code
+      ti.sendCommand  code
 
 #INTEGER_REGEXP = /^\-?\d+$/
 #app.directive "validCommand", ($log)->
