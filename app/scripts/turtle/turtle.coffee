@@ -82,8 +82,8 @@ app.directive 'turtleCodeCommandPanel', (Turtle,turtleInterpreter) ->
     ti = new turtleInterpreter()
     $scope.patternCode = /^(move|turn)+\ +\-?\d+$/
     $scope.addCode = (code,write)->
-      $log.log code
       ti.sendCommand  code
+      $scope.code = ""
 
 #INTEGER_REGEXP = /^\-?\d+$/
 #app.directive "validCommand", ($log)->

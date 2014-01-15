@@ -1,11 +1,9 @@
-<form name="codeCommand" novalidate>
-    <input type="text" name="code" ng-pattern="patternCode" ng-model="code" width="20">
-    codeCommand.$valid = {{codeCommand.$valid}}
-    codeCommand.code.$valid = {{codeCommand.code.$valid}}
-    <button ng-click="addCode(code,write)" class="btn-primary" valid-command>   ---->   </button>
-    <br/>
+<form name="codeCommand" novalidate ng-submit="addCode(code,write);"  >
+   <div class="control-group" ng-class="{error: codeCommand.code.$error, success: codeCommand.code.$valid} ">
+      <label class="control-label" for="code">Enter your code</label>
+    <input type="text" class="form-control " name="code" id="code" ng-pattern="patternCode" ng-model="code" width="20" ng-value="code">
     <button type="button" class="btn btn-primary" ng-model="write" btn-checkbox >
-        write
+        <i class="icon-pencil icon-white"></i>
     </button>
-
+    </div>
 </form>

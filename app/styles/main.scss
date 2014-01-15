@@ -10,7 +10,9 @@ $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
   -o-border-radius: $radius;
   border-radius: $radius;
 }
-
+.container{
+  width: 90%;
+}
 .box { @include border-radius(10px); }
 
 $basicbgcolor : #888;
@@ -22,6 +24,7 @@ body {
     background: $basicbgcolor;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
+
 }
 
 
@@ -38,6 +41,7 @@ body {
 }
 .command-pannel input{
   @include border-radius(5px);
+  width: 100px;
 }
 .rendering-panel{
   @extend .box;
